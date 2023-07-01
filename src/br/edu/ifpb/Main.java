@@ -2,9 +2,8 @@ package br.edu.ifpb;
 
 import br.edu.ifpb.enumerations.TiposUsuario;
 import br.edu.ifpb.modelo.Sistema;
-import br.edu.ifpb.modelo.SolicitacaoBolsa;
 import br.edu.ifpb.modelo.Usuario;
-
+import br.edu.ifpb.modelo.Solicitacao;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -14,10 +13,8 @@ public class Main {
         Sistema sistema = new Sistema();
         Scanner entrada = new Scanner(System.in);
         int resposta;
-        do
-
-        {
-            System.out.println("\nMENU\n1 - Adicionar usuário\n2 - Listar usuários\n3 - Realizar solicitação");
+        do {
+            System.out.println("\nMENU\n1 - Adicionar usuário\n2 - Realizar solicitação \n3 - Listar solicitações do usuário \n4- Listar todas as solicitações do usuário \n5- Listar usuários bolsitas \n6- Validar solicitação");
             resposta = entrada.nextInt();
             entrada.nextLine();
 
@@ -34,23 +31,28 @@ public class Main {
                     Usuario usuario = new Usuario(nome, email, matricula, tipo);
                     sistema.adicionaUsuario(usuario);
                     break;
-
                 case 2:
-                    for (Object usuarios : sistema.getUsuarios()) {
-                        System.out.println(usuarios);
-                    }
-                    break;
-                case 3:
+                    Usuario usuarioBol1 = sistema.buscarUsuario(entrada);
                     System.out.println("Descreva a solicitação: ");
                     String descricao = entrada.nextLine();
                     LocalDate data = LocalDate.now();
-                    Usuario usuario1 = (Usuario) sistema.getUsuarios().get(0); //TODO: selecionar o usuário solicitante da lista
-                    SolicitacaoBolsa solicitacaoBolsa = new SolicitacaoBolsa();
-                    solicitacaoBolsa.setDescricao(descricao);
-                    solicitacaoBolsa.setData(data);
-                    solicitacaoBolsa.setUsuario(usuario1);
-                    sistema.adicionaSolicitacao(solicitacaoBolsa);
-                    System.out.println(solicitacaoBolsa);
+                    Solicitacao solicitacao = new Solicitacao();
+                    solicitacao.setDescricao(descricao);
+                    solicitacao.setData(data);
+                    solicitacao.setUsuario(usuarioBol1);
+                    sistema.adicionaSolicitacao(solicitacao);
+                    System.out.println(solicitacao);
+                    break;
+                case 3:
+                     Usuario usuarioBol2 = sistema.buscarUsuario(entrada);
+                     for (Solicitacao solicitacao1 : sistema.getSolicitacoes()) {
+                        if(solicitacao1.getUsuario().equals(usuarioBol2)){
+                            System.out.println(solicitacao1);
+                        }
+                     }
+                    break;
+                case 4:
+                     break;
             }
         }while(resposta !=0);
     }

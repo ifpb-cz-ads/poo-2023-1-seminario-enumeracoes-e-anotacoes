@@ -1,5 +1,4 @@
 package br.edu.ifpb.modelo;
-
 import br.edu.ifpb.enumerations.TiposUsuario;
 
 

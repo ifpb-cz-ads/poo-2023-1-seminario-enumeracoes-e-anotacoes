@@ -1,6 +1,9 @@
 package br.edu.ifpb.modelo;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import br.edu.ifpb.enumerations.TiposUsuario;
 
 public class Sistema {
     @SuppressWarnings(value = { "rawtypes"})
@@ -33,5 +36,20 @@ public class Sistema {
 
     public void removeSolicitacao(Solicitacao solicitacao){
         solicitacoes.remove(solicitacao);
+    }
+
+    public Usuario buscarUsuario(Scanner entrada){
+        int i = 0;
+        for (Object usuarios : getUsuarios()) {
+            Usuario usuarioBol = (Usuario) usuarios;
+            if(usuarioBol.getTipo()==TiposUsuario.Bolsista){
+                System.out.println(i + " - " + usuarioBol);
+            }
+            i++;
+        }
+        System.out.println("Escolha o usuário: ");
+        int indexUsuario = entrada.nextInt();
+        Usuario usuarioBol = (Usuario) getUsuarios().get(indexUsuario);
+        return usuarioBol;
     }
 }

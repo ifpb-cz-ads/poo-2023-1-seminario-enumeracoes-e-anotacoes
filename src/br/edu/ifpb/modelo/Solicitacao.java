@@ -1,10 +1,9 @@
 package br.edu.ifpb.modelo;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.UUID;
 
-public abstract class Solicitacao {
+public class Solicitacao {
     private UUID codigo = UUID.randomUUID();
     private String descricao;
     private LocalDate data;
@@ -58,5 +57,4 @@ public abstract class Solicitacao {
                 '}';
     }
 
-    public abstract void validaSolicitacao();
 }
