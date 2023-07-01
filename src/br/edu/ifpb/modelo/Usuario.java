@@ -4,10 +4,10 @@ import br.edu.ifpb.enumerations.TiposUsuario;
 
 
 public class Usuario {
-    String nomeCompleto;
-    String email;
-    String matricula;
-    TiposUsuario tipo;
+    private String nomeCompleto;
+    private String email;
+    private String matricula;
+    private TiposUsuario tipo;
 
     public Usuario() {
     }
@@ -49,5 +49,15 @@ public class Usuario {
 
     public void setTipo(TiposUsuario tipo) {
         this.tipo = tipo;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nomeCompleto='" + nomeCompleto + '\'' +
+                ", email='" + email + '\'' +
+                ", matricula='" + matricula + '\'' +
+                ", tipo=" + tipo +
+                '}';
     }
 }
