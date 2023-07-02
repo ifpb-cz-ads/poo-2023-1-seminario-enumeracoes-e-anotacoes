@@ -23,7 +23,7 @@ public class Main {
         Sistema sistema = Main.lerSistemaDeArquivoBinario();
         Scanner entrada = new Scanner(System.in);
         ArrayList<Solicitacao> solicitacoes = sistema.getSolicitacoes();
-        UsuarioAdm usuarioAdm = new UsuarioAdm("Carlos", "carlos123@gmail.com", "1111-1", TiposUsuario.Administrador);
+        UsuarioAdm usuarioAdm = new UsuarioAdm("Carlos", "carlos123@gmail.com", "1111-1", TiposUsuario.ADMINISTRADOR);
         boolean loginAdm = false,loginUsuario = false;
         int opcao = Main.MenuLogin(entrada), opcao2;
         entrada.nextLine();
@@ -78,7 +78,7 @@ public class Main {
                                     System.out.println("Informe a matrícula: ");
                                     String matricula = entrada.nextLine();
                                     System.out.println("Informe o tipo de usuáio:\nDiscente\nBolsista\nDocente");
-                                    TiposUsuario tipo = TiposUsuario.valueOf(entrada.nextLine());
+                                    TiposUsuario tipo = TiposUsuario.valueOf(entrada.nextLine().toUpperCase());
                                     Usuario usuario = new Usuario(nome, email, matricula, tipo);
                                     System.out.println(usuario);
                                     sistema.adicionaUsuario(usuario);
@@ -127,7 +127,7 @@ public class Main {
                             switch(opcao2){
                                 case 1:
                                     System.out.println("--------Fazer solicitação");
-                                    if(usuarioAchado.getTipo()==TiposUsuario.Bolsista){
+                                    if(usuarioAchado.getTipo()==TiposUsuario.BOLSISTA){
                                         System.out.println("Descreva a solicitação: ");
                                         String descricao = entrada.nextLine();
                                         LocalDate data = LocalDate.now();
@@ -143,7 +143,7 @@ public class Main {
                                     break;
                                 case 2:
                                     System.out.println("--------Listar solicitações");
-                                    if(usuarioAchado.getTipo()==TiposUsuario.Bolsista){
+                                    if(usuarioAchado.getTipo()==TiposUsuario.BOLSISTA){
                                         boolean vazia = false;
                                         for (Solicitacao solicitacao : solicitacoes) {
                                             if(solicitacao.getUsuario().getMatricula().equals(usuarioAchado.getMatricula())){

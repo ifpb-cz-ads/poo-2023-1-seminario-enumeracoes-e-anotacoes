@@ -1,8 +1,9 @@
 package br.edu.ifpb.enumerations;
 
 public enum TiposUsuario {
-    Discente,
-    Bolsista,
-    Docente,
-    Administrador
+	//Conjunto de constante com letra maiscula
+    DISCENTE,
+    BOLSISTA,
+    DOCENTE,
+    ADMINISTRADOR;
 }

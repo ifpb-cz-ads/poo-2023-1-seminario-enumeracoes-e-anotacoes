@@ -36,7 +36,7 @@ public class UsuarioAdm extends Usuario{
     public Sistema listarUsuariosBolsitas(Sistema sistema){
         for (Object usuario : sistema.getUsuarios()){
             Usuario usuarioBol = (Usuario) usuario;
-            if(usuarioBol.getTipo()==TiposUsuario.Bolsista){
+            if(usuarioBol.getTipo()==TiposUsuario.BOLSISTA){
                 System.out.println(usuarioBol);
             }
         }
