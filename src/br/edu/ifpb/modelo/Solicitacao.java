@@ -52,7 +52,7 @@ public class Solicitacao {
                 "codigo=" + codigo +
                 ", descricao='" + descricao + '\'' +
                 ", data=" + data +
-                ", usuario=" + usuario +
+                ", usuario=" + usuario.getMatricula() +
                 ", estado=" + estado +
                 '}';
     }
