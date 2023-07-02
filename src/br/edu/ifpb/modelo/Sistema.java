@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import br.edu.ifpb.annotations.StatusDev;
 import br.edu.ifpb.enumerations.TiposUsuario;
 
 public class Sistema implements Serializable {
@@ -39,6 +40,7 @@ public class Sistema implements Serializable {
         solicitacoes.remove(solicitacao);
     }
 
+    @Deprecated
     public Usuario buscarUsuario(Scanner entrada, String mat){
         Usuario usuarioAchado = new Usuario();
         for (Object usuarios : getUsuarios()) {
@@ -48,6 +50,17 @@ public class Sistema implements Serializable {
             }
         }
         return usuarioAchado;
+    }
+
+    @StatusDev(status = StatusDev.Status.COMPLETO, descricao = "Nova função para encontrar usuário!")
+    public Usuario acharUsuario(String matricula){
+        for (Object usuarios : getUsuarios()) {
+            Usuario usuario = (Usuario) usuarios;
+            if(usuario.getMatricula().equals(matricula)){
+                return usuario;
+            }
+        }
+        return null;
     }
 
 }

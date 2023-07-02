@@ -19,6 +19,7 @@ import java.util.Scanner;
 
 public class Main {
 
+    @SuppressWarnings(value = "deprecation")
     public static void main(String[] args) {
         Sistema sistema = Main.lerSistemaDeArquivoBinario();
         Scanner entrada = new Scanner(System.in);
@@ -97,7 +98,7 @@ public class Main {
                     } else {
                         System.out.println("Senha inválida! Informe novamente.");
                     }
-                }while(loginAdm!=true);
+                }while(!loginAdm);
                 break;
             case 2:
                 do{
@@ -168,7 +169,7 @@ public class Main {
                     else {
                         System.out.println("Matrícula inexistente! Tente novamente.");
                     }
-                }while(loginUsuario!=true);
+                }while(!loginUsuario);
                 break;
         }
     }
@@ -179,8 +180,7 @@ public class Main {
         System.out.println("1- Login Administrador");
         System.out.println("2- Login Usuário");
         System.out.println("Informe a opção:");
-        int opcao = entrada.nextInt();
-        return opcao;
+        return entrada.nextInt();
     }
 
     public static boolean criarArquivo(){
@@ -199,7 +199,7 @@ public class Main {
     }
 
     public static void salvarArquivoSerializado(Sistema sistema){
-        FileOutputStream fos = null;
+        FileOutputStream fos;
         ObjectOutputStream oos = null;
         try{
             fos = new FileOutputStream("arquivo.bin");
@@ -223,10 +223,10 @@ public class Main {
 
     public static Sistema lerSistemaDeArquivoBinario(){
         Sistema sistema = new Sistema();
-        FileInputStream fis = null;
+        FileInputStream fis;
         ObjectInputStream ois = null;
         try{
-            if(criarArquivo()!=true){
+            if(!criarArquivo()){
                 fis = new FileInputStream("arquivo.bin");
                 ois = new ObjectInputStream(fis);
                 sistema = (Sistema)ois.readObject();
