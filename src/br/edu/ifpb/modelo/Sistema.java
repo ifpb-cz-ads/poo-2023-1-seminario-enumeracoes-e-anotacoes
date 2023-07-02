@@ -1,11 +1,12 @@
 package br.edu.ifpb.modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import br.edu.ifpb.enumerations.TiposUsuario;
 
-public class Sistema {
+public class Sistema implements Serializable {
     @SuppressWarnings(value = { "rawtypes"})
     private ArrayList usuarios = new ArrayList();
 
@@ -38,18 +39,15 @@ public class Sistema {
         solicitacoes.remove(solicitacao);
     }
 
-    public Usuario buscarUsuario(Scanner entrada){
-        int i = 0;
+    public Usuario buscarUsuario(Scanner entrada, String mat){
+        Usuario usuarioAchado = new Usuario();
         for (Object usuarios : getUsuarios()) {
-            Usuario usuarioBol = (Usuario) usuarios;
-            if(usuarioBol.getTipo()==TiposUsuario.Bolsista){
-                System.out.println(i + " - " + usuarioBol);
+            Usuario usuario = (Usuario) usuarios;
+            if(usuario.getMatricula().equals(mat)){
+                usuarioAchado = usuario;
             }
-            i++;
         }
-        System.out.println("Escolha o usuário: ");
-        int indexUsuario = entrada.nextInt();
-        Usuario usuarioBol = (Usuario) getUsuarios().get(indexUsuario);
-        return usuarioBol;
+        return usuarioAchado;
     }
+
 }

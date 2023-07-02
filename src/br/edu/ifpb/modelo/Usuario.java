@@ -1,8 +1,10 @@
 package br.edu.ifpb.modelo;
+import java.io.Serializable;
+
 import br.edu.ifpb.enumerations.TiposUsuario;
 
 
-public class Usuario {
+public class Usuario implements Serializable {
     private String nomeCompleto;
     private String email;
     private String matricula;

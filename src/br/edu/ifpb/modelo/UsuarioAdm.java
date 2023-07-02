@@ -5,7 +5,7 @@ import java.util.Scanner;
 import br.edu.ifpb.enumerations.TiposUsuario;
 
 public class UsuarioAdm extends Usuario{
-    private String senha = "654321";
+    private String senha = "654123";
 
     public UsuarioAdm(String nomeCompleto, String email, String matricula, TiposUsuario tipo) {
         super(nomeCompleto, email, matricula, tipo);

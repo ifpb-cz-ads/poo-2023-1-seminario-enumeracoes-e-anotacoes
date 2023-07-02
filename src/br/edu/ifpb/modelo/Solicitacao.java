@@ -1,9 +1,10 @@
 package br.edu.ifpb.modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.UUID;
 
-public class Solicitacao {
+public class Solicitacao implements Serializable{
     private UUID codigo = UUID.randomUUID();
     private String descricao;
     private LocalDate data;
