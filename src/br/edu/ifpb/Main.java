@@ -30,7 +30,7 @@ public class Main {
                     System.out.println("Informe a matrícula: ");
                     String matricula = entrada.nextLine();
                     System.out.println("Informe o tipo de usuáio:\nDiscente\nBolsista\nDocente\nAdministador");
-                    TiposUsuario tipo = TiposUsuario.valueOf(entrada.nextLine());
+                    TiposUsuario tipo = TiposUsuario.valueOf(entrada.nextLine().toUpperCase()); //Método toUpperCase() transforma as letras em maisculas
                     Usuario usuario = new Usuario(nome, email, matricula, tipo);
                     sistema.adicionaUsuario(usuario);
                     break;
